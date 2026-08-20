@@ -71,15 +71,6 @@ type OrderService struct {
 	Subtotal  float64 `json:"subtotal"`
 }
 
-func (s OrderService) CalculateSubtotal(price, days float64) float64 {
-	quantity := s.Quantity
-	if quantity < 1 {
-		quantity = 1
-	}
-	_ = days
-	return price * float64(quantity)
-}
-
 type FosterOrder struct {
 	ID             int64          `json:"orderId"`
 	OrderNo        string         `json:"orderNo"`

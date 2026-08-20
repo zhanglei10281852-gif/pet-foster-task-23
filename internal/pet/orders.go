@@ -89,7 +89,7 @@ func (s *Service) CreateOrder(ctx context.Context, principal Principal, input Cr
 		if active != 1 {
 			return FosterOrder{}, fmt.Errorf("%w: selected service is unavailable", ErrConflict)
 		}
-		selected.Subtotal = selected.CalculateSubtotal(servicePrice, days)
+		selected.Subtotal = servicePrice * float64(selected.Quantity) * days
 		total += selected.Subtotal
 		serviceRows = append(serviceRows, selected)
 	}
